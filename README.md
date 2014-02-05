@@ -1,2 +1,3 @@
-TalleresComponentes
+Talleres componentes
+En Java, .NET
 ===================
