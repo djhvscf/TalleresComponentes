@@ -8,6 +8,7 @@ package javaapp1;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.text.SimpleDateFormat;
+import javax.swing.JTextField;
 import javax.swing.Timer;
 
 /**
@@ -50,21 +51,72 @@ public class NewJPanel extends javax.swing.JPanel {
 
         jLabel1 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
+        jLabel2 = new javax.swing.JLabel();
+        jTextField2 = new javax.swing.JTextField();
 
         setLayout(new java.awt.BorderLayout());
 
         jLabel1.setText("jLabel1");
         add(jLabel1, java.awt.BorderLayout.CENTER);
 
-        jButton1.setText("jButton1");
+        jButton1.setText("Boton 1");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
             }
         });
         add(jButton1, java.awt.BorderLayout.PAGE_END);
+
+        jLabel2.setText("jLabel2");
+        add(jLabel2, java.awt.BorderLayout.LINE_END);
+
+        jTextField2.setText("jTextField2");
+        add(jTextField2, java.awt.BorderLayout.PAGE_START);
     }// </editor-fold>//GEN-END:initComponents
 
+    
+    
+    private String getNameNumber(int iKeyCode)
+    {
+        String sName = "";
+        switch (iKeyCode)
+        {
+            case 96:
+                sName = "Cero";
+                break;
+            case 97:
+                    sName = "Cero";
+                break;
+            case 98:
+                    sName = "Cero";
+                break;
+            case 99:
+                sName = "Cero";
+                break;
+            case 100:
+                sName = "Cero";
+                break;
+            case 101:
+                sName = "Cero";
+                break;
+            case 102:
+                sName = "Cero";
+                break;
+            case 103:
+                sName = "Cero";
+                break;
+            case 104:
+                sName = "Cero";
+                break;
+            case 105:
+                sName = "Cero";
+                break;
+        }
+        return sName;
+    }
+    
+    
+    
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         jLabel1.setText("Hola");
     }//GEN-LAST:event_jButton1ActionPerformed
@@ -72,5 +124,7 @@ public class NewJPanel extends javax.swing.JPanel {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JTextField jTextField2;
     // End of variables declaration//GEN-END:variables
 }
