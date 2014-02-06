@@ -7,9 +7,12 @@ package javaapp1;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
 import java.text.SimpleDateFormat;
 import javax.swing.JTextField;
 import javax.swing.Timer;
+import javax.swing.text.JTextComponent;
 
 /**
  *
@@ -17,29 +20,105 @@ import javax.swing.Timer;
  */
 public class NewJPanel extends javax.swing.JPanel {
 
-    /**
-     * Creates new form NewJPanel
-     */
    JClock jClock = new JClock();
-
-
-     public class JClock extends javax.swing.JPanel implements ActionListener{
+   private static final String[] tensNames = {
+    "",
+    " diez",
+    " veinte",
+    " treinta",
+    " cuarenta",
+    " cincuenta",
+    " sesenta",
+    " setenta",
+    " ochenta",
+    " noventa"
+  };
+   
+   private static final String[] numNames = {
+    "",
+    " uno",
+    " dos",
+    " tres",
+    " cuatro",
+    " cinco",
+    " seis",
+    " siete",
+    " ocho",
+    " nueve",
+    " diez",
+    " once",
+    " doce",
+    " tres",
+    " catorce",
+    " quince",
+    " diciseis",
+    " diecisiete",
+    " dieciocho",
+    " diecinueve"
+  };
+    public class JClock extends javax.swing.JPanel implements ActionListener{
     //Declaramos el timer con 1000 milisegundos, y el oyente la misma clase 
-    Timer timer = new Timer(1000,this);    
+        Timer timer = new Timer(1000,this);    
 
+        
    //En el constructor iniciamos el timer 
-   public JClock() {
-        initComponents();
-        timer.start();
-    }    
+        public JClock() {
+            initComponents();
+            timer.start();
+            jTextField2.addKeyListener(new KeyAdapterNumbersOnly());
+            jTextField2.setText("");
+        }    
     
-   @Override
-    //implementamos el método y asignamos la hora actual a la etiqueta lblClock
-    public void actionPerformed(ActionEvent e) {
-        SimpleDateFormat sdf = new SimpleDateFormat("hh:mm:ss");         
-        jLabel1.setText(sdf.format(new java.util.Date()));
-    }    
-}
+        @Override
+         //implementamos el método y asignamos la hora actual a la etiqueta lblClock
+         public void actionPerformed(ActionEvent e) {
+             SimpleDateFormat sdf = new SimpleDateFormat("hh:mm:ss");         
+             jLabel1.setText(sdf.format(new java.util.Date()));
+         }    
+   
+    }
+ 
+     class KeyAdapterNumbersOnly extends KeyAdapter {
+
+            /**
+             * Regular expression which defines the allowed characters.
+             */
+            private String allowedRegex = "[^0-9]";
+
+            /**
+             * Key released on field.
+             */
+            public void keyReleased(KeyEvent e) {
+                String curText = ((JTextComponent) e.getSource()).getText();
+                curText = curText.replaceAll(allowedRegex, "");
+
+                ((JTextComponent) e.getSource()).setText(curText);
+
+                if(curText  != "")
+                {
+                   jLabel2.setText(""); 
+                   jLabel2.setText(showNumberName(Integer.parseInt(curText))); 
+                }
+            }
+            
+            private String showNumberName(int number) {
+                String soFar;
+
+                if (number % 100 < 20){
+                  soFar = numNames[number % 100];
+                  number /= 100;
+                }
+                else {
+                  soFar = numNames[number % 10];
+                  number /= 10;
+
+                  soFar = tensNames[number % 10] + soFar;
+                  number /= 10;
+                }
+                if (number == 0) return soFar;
+                return numNames[number] + " cientos" + soFar;
+              }
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -75,45 +154,6 @@ public class NewJPanel extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     
-    
-    private String getNameNumber(int iKeyCode)
-    {
-        String sName = "";
-        switch (iKeyCode)
-        {
-            case 96:
-                sName = "Cero";
-                break;
-            case 97:
-                    sName = "Cero";
-                break;
-            case 98:
-                    sName = "Cero";
-                break;
-            case 99:
-                sName = "Cero";
-                break;
-            case 100:
-                sName = "Cero";
-                break;
-            case 101:
-                sName = "Cero";
-                break;
-            case 102:
-                sName = "Cero";
-                break;
-            case 103:
-                sName = "Cero";
-                break;
-            case 104:
-                sName = "Cero";
-                break;
-            case 105:
-                sName = "Cero";
-                break;
-        }
-        return sName;
-    }
     
     
     
