@@ -21,7 +21,7 @@ import javax.swing.text.JTextComponent;
 public class NewJPanel extends javax.swing.JPanel {
 
    JClock jClock = new JClock();
-   private static final String[] tensNames = {
+   private static final String[] decimales = {
     "",
     " diez",
     " veinte",
@@ -34,7 +34,7 @@ public class NewJPanel extends javax.swing.JPanel {
     " noventa"
   };
    
-   private static final String[] numNames = {
+   private static final String[] numeros = {
     "",
     " uno",
     " dos",
@@ -102,21 +102,20 @@ public class NewJPanel extends javax.swing.JPanel {
             }
             
             private String showNumberName(int number) {
-                String soFar;
+                String largo;
 
                 if (number % 100 < 20){
-                  soFar = numNames[number % 100];
-                  number /= 100;
+                  largo = numeros[number % 100];
                 }
                 else {
-                  soFar = numNames[number % 10];
+                  largo = numeros[number % 10];
                   number /= 10;
 
-                  soFar = tensNames[number % 10] + soFar;
+                  largo = decimales[number % 10] + largo;
                   number /= 10;
                 }
-                if (number == 0) return soFar;
-                return numNames[number] + " cientos" + soFar;
+                if (number == 0) return largo;
+                return numeros[number] + " cientos" + largo;
               }
     }
     /**
