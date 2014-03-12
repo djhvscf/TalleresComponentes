@@ -22,16 +22,6 @@ import java.util.List;
  */
 public class ArrayMath {
         
-    public static float getAverage(int[] arrayOfInt){
-        int minValue = 0;
-       for (int i =0; i < arrayOfInt.length; i++){
-           if (minValue > arrayOfInt[i]){
-               minValue = arrayOfInt[i];
-           }
-       }
-       return minValue;
-    }
-    
     public static int[] sumaArrays(int[] ar1, int[] ar2){
         
         int[] resul = new int [OperacionesArrayMath.getMinLength(ar1, ar2)];
