@@ -27,7 +27,7 @@ public class DBConnection {
             String driverClassName = "com.mysql.jdbc.Driver";
             String url = "jdbc:mysql://localhost:3306/cenfotecadb";
             String username = "root"; 
-            String password = "admin10";
+            String password = "mtrlnk";
       Class.forName(driverClassName);
       connect = DriverManager
               .getConnection(url,username, password);
@@ -48,6 +48,28 @@ public class DBConnection {
     }
 
   }
+    
+    protected ResultSet cargarLenguaje() throws ClassNotFoundException, SQLException{
+        try
+        {
+            String driverClassName = "com.mysql.jdbc.Driver";
+            String url = "jdbc:mysql://localhost:3306/examenbd";
+            String username = "root"; 
+            String password = "mtrlnk";
+            Class.forName(driverClassName);
+            connect = DriverManager
+                  .getConnection(url,username, password);
+            statement = connect.createStatement();
+            resultSet = statement.executeQuery("select * from lenguaje");
+            return resultSet;
+        }
+        catch (Exception e) {
+            throw e;
+        } 
+        finally {
+        //close();
+        }
+    }
 
   // You need to close the resultSet
   private void close() {

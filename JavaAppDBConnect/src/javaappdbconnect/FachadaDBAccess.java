@@ -4,6 +4,13 @@
  */
 package javaappdbconnect;
 
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+import javax.swing.DefaultComboBoxModel;
+
 /**
  *
  * @author Dennis
@@ -16,5 +23,18 @@ public class FachadaDBAccess {
     {
         dbConnection = new DBConnection();
         return dbConnection.readDataBase(psUserName, psPassword);
+    }
+    
+    public DefaultComboBoxModel cargarCombo() throws SQLException, ClassNotFoundException
+    {
+            dbConnection = new DBConnection();
+            DefaultComboBoxModel modeloCombo = new DefaultComboBoxModel();
+            ResultSet rs = dbConnection.cargarLenguaje();
+            while (rs.next()) {
+                modeloCombo.addElement(rs.getObject("nombre"));
+            }
+            rs.close();
+            
+            return modeloCombo;
     }
 }

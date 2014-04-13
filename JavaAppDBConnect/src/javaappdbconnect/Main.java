@@ -10,8 +10,11 @@ package javaappdbconnect;
  */
 public class Main {
   public static void main(String[] args) throws Exception {
-    DBConnection dao = new DBConnection();
-    dao.readDataBase("s",",");
+   /* DBConnection dao = new DBConnection();
+    dao.readDataBase("s",",");*/
+    
+    FachadaDBAccess c = new FachadaDBAccess();
+    c.cargarCombo();
   }
 
 
